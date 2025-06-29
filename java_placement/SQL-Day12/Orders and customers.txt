@@ -1,0 +1,43 @@
+
+mysql> create table customer01(
+    -> customer_id int primary key,
+    -> name varchar(100));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table orders(
+    -> order_id int,
+    -> cust_id int,
+    -> amt decimal(10,2),
+    -> foreign key (cust_id) references customer01(customer_id));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from orders;
+Empty set (0.00 sec)
+
+mysql> insert into orders valuse(1,01,40000),(2,02,90000),(3,03,80000),(4,04,30000),(5,05,40000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'valuse(1,01,40000),(2,02,90000),(3,03,80000),(4,04,30000),(5,05,40000)' at line 1
+mysql> insert into orders values(1,01,40000),(2,02,90000),(3,03,80000),(4,04,30000),(5,05,40000);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`sqltask`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer01` (`customer_id`))
+mysql> insert into customer01(1,'priya'),(2,'renu'),(3,'kani');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,'priya'),(2,'renu'),(3,'kani')' at line 1
+mysql> insert into customer01 values(1,'priya'),(2,'renu'),(3,'kani');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into orders values(1,01,40000),(2,02,90000),(3,03,80000),(4,04,30000),(5,05,40000);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`sqltask`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer01` (`customer_id`))
+mysql> insert into orders values(1,01,40000),(2,02,90000),(3,03,80000);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select c.customer_id ,c.name,o.order_id,o.amt
+    -> from customer01 c
+    -> join orders o on c.customer_id = o.cust_id;
++-------------+-------+----------+----------+
+| customer_id | name  | order_id | amt      |
++-------------+-------+----------+----------+
+|           1 | priuu |        1 | 40000.00 |
+|           2 | molli  |        2 | 90000.00 |
+|           3 | ross|        3 | 80000.00 |
++-------------+-------+----------+----------+
+3 rows in set (0.00 sec)
