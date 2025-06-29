@@ -1,0 +1,19 @@
+mysql> create table marks(
+    -> student_id int,
+    -> subject varchar(50),
+    -> marks int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into marks values(1,'maths',89),(2,'physics',90),(3,'chemistry',78),(4,'tamil',67),(5,'science',99);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from marks where marks>80;
++------------+---------+-------+
+| student_id | subject | marks |
++------------+---------+-------+
+|          1 | maths   |    79 |
+|          2 | physics |    89 |
+|          5 | science |    79 |
++------------+---------+-------+
+3 rows in set (0.00 sec)
