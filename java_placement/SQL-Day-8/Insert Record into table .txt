@@ -1,0 +1,46 @@
+
+mysql> insert into student values(1,'priya',18,'jeni@gmail.com');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into student values(2,'renu',17,'suchan@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values(3,'mohan',15,'rome@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values(4,'kani',10,'sudharsan@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+mysql> insert into student values(5,'gokul',27,'janu@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into course values(101,'java programming',50000),(102,'web development',40000);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into course values(103,'c programming',30000),(104,'full stack development',60000),(105,'Software Development',70000);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++---------+-------+------+-----------------+
+| stud_id | name  | age  | emain           |
++---------+-------+------+-----------------+
+|       1 | jeni |   18 | priya@gmail.com |
+|       2 | suchan |   17 | renu@gmail.com  |
+|       3 | rome|   15 | mohan@gmail.com |
+|       4 | sudharshan|   10 | kani@gmail.com  |
+|       5 | janu |   27 | gokul@gmail.com |
++---------+-------+------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from course;
++-----------+------------------------+------------+
+| course_id | course_name            | course_fee |
++-----------+------------------------+------------+
+|       101 | java programming       |   50000.00 |
+|       102 | web development        |   40000.00 |
+|       103 | c programming          |   30000.00 |
+|       104 | full stack development |   60000.00 |
+|       105 | Software Development   |   70000.00 |
++-----------+------------------------+------------+
+5 rows in set (0.00 sec)
