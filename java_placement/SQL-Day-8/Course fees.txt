@@ -1,0 +1,16 @@
+mysql> update course set course_fee = 8000
+    -> where course_id=104;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from course;
++-----------+------------------------+------------+
+| course_id | course_name            | course_fee |
++-----------+------------------------+------------+
+|       101 | java programming       |   50000.00 |
+|       102 | web development        |   40000.00 |
+|       103 | c programming          |   30000.00 |
+|       104 | full stack development |    8000.00 |
+|       105 | Software Development   |   70000.00 |
++-----------+------------------------+------------+
+5 rows in set (0.00 sec)
