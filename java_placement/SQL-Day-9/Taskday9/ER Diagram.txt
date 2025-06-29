@@ -1,0 +1,12 @@
+*Entites:
+-Book(book_id,title,Price)
+-Auther (auther_id,name)
+-publisher(publisher_id,name)
+
+*RelationShip:
+-Book is written by auther (many-to-one)
+-Book is published by publisher(many-to-one)
+
+ER DIAGRAM:
+
+Auther(auther_id)-----<Book>----Publisher(publisher_id)
