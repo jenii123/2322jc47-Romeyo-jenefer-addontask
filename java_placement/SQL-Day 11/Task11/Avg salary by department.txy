@@ -1,0 +1,35 @@
+
+mysql> create table emp2(
+    -> emp_id int,
+    -> emp_name varchar(100),
+    -> sal decimal(10,2),
+    -> department varchar(50));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into emp2 values(1,'priya',100000,'managing'),(2,'sakthi',50000,'testing'),(3,'ram',70000,'validate'),(4,'kavin',90000,'managing'),(5,'rahul',30000,'testing');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp2;
++--------+----------+-----------+------------+
+| emp_id | emp_name | sal       | department |
++--------+----------+-----------+------------+
+|      1 | jeni  | 100000.00 | managing   |
+|      2 | jonh   |  50000.00 | testing    |
+|      3 | jiny     |  70000.00 | validate   |
+|      4 | romi  |  90000.00 | managing   |
+|      5 | bhommi   |  30000.00 | testing    |
++--------+----------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select department,avg(sal) as avg_salary
+    -> from emp2
+    -> group by department;
++------------+--------------+
+| department | avg_salary   |
++------------+--------------+
+| managing   | 95000.000000 |
+| testing    | 40000.000000 |
+| validate   | 70000.000000 |
++------------+--------------+
+3 rows in set (0.00 sec)
