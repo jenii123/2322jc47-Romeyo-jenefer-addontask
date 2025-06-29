@@ -1,0 +1,21 @@
+mysql> create table author(
+    -> author_id int primary key,
+    -> name varchar(10),
+    -> bio text);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table publisher(
+    -> publisher_id int primary key,
+    -> name varchar(10),
+    -> location varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table books(
+    -> books_id int primary key,
+    -> title varchar(10),
+    -> price decimal(8,2),
+    -> author_id int,
+    -> publisher_id int,
+    -> foreign key (author_id) references author(author_id),
+    -> foreign key (publisher_id) references publisher(publisher_id));
+Query OK, 0 rows affected (0.05 sec)
