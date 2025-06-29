@@ -1,0 +1,65 @@
+mysql> create table customer(
+    -> cust_id int,
+    -> name varchar(100),
+    -> city varchar(50),
+    -> age int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc customer;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| cust_id | int          | YES  |     | NULL    |       |
+| name    | varchar(100) | YES  |     | NULL    |       |
+| city    | varchar(50)  | YES  |     | NULL    |       |
+| age     | int          | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> insert into customer values(1,'priya','coimbatore',18),(2,'renu','erode',17),(3,'ram','chennai',41),(4,'rani','madhurai',23),(5,'keerthi','theni',25);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer;
++---------+---------+------------+------+
+| cust_id | name    | city       | age  |
++---------+---------+------------+------+
+|       1 | jeni   | coimbatore |   18 |
+|       2 | bheem  | erode      |   17 |
+|       3 | chukki   | chennai    |   41 |
+|       4 | tom   | madhurai   |   23 |
+|       5 | jerry | theni      |   25 |
++---------+---------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from customer
+    ->
+    -> where city='coimbatore';
++---------+-------+------------+------+
+| cust_id | name  | city       | age  |
++---------+-------+------------+------+
+|       1 | jeni | coimbatore |   18 |
++---------+-------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer
+    -> where age>20;
++---------+---------+----------+------+
+| cust_id | name    | city     | age  |
++---------+---------+----------+------+
+|       3 | chukki    | chennai  |   41 |
+|       4 | tom  | madhurai |   23 |
+|       5 | jerry | theni    |   25 |
++---------+---------+----------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer
+    -> where name like '%a%';
++---------+-------+------------+------+
+| cust_id | name  | city       | age  |
++---------+-------+------------+------+
+|       1 | jeni| coimbatore |   18 |
+|       3 | chukki | chennai    |   41 |
+|       4 | tom | madhurai   |   23 |
++---------+-------+------------+------+
+3 rows in set (0.00 sec)
