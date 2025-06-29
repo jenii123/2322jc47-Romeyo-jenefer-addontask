@@ -1,0 +1,38 @@
+ mysql> create table register(
+    -> reg_id int,
+    -> stud_name varchar(100),
+    -> course varchar(100),
+    -> fees decimal(10,2));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into register values(101,'priya','fullstack development',50000),(102,'priyanka','software development',60000),(103,'rakshana','web development',50000),(104,'sakthi','fullstack development',50000),(105,'Jothi','software development',60000);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from register;
++--------+-----------+-----------------------+----------+
+| reg_id | stud_name | course                | fees     |
++--------+-----------+-----------------------+----------+
+|    101 | joni     | fullstack development | 50000.00 |
+|    102 | jeni  | software development  | 60000.00 |
+|    103 | genu | web development       | 50000.00 |
+|    104 | rochy   | fullstack development | 50000.00 |
+|    105 | Jony   | software development  | 60000.00 |
++--------+-----------+-----------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select course,count(stud_name) as student_count
+    -> from register
+    -> group by reg_id;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'sqltask.register.course' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select course,count(stud_name) as student_count
+    -> from register
+    -> group by course;
++-----------------------+---------------+
+| course                | student_count |
++-----------------------+---------------+
+| fullstack development |             2 |
+| software development  |             2 |
+| web development       |             1 |
++-----------------------+---------------+
+3 rows in set (0.00 sec)
