@@ -1,0 +1,37 @@
+mysql> select * from student;
++---------+-------+------+-----------------+
+| stud_id | name  | age  | emain           |
++---------+-------+------+-----------------+
+|       1 | jeni |   18 | jeni@gmail.com |
+|       2 | suchan |   17 | suchan@gmail.com  |
+|       3 | bheem|   15 | bheem@gmail.com |
+|       4 | chukki |   10 | chukii@gmail.com  |
+|       5 | suchuu|   27 | suchuu@gmail.com |
++---------+-------+------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from marks;
++---------+-----------+-------+
+| stud_id | subject   | marks |
++---------+-----------+-------+
+|       1 | maths     |    89 |
+|       2 | physics   |    90 |
+|       3 | chemistry |    78 |
+|       4 | tamil     |    67 |
+|       5 | science   |    99 |
++---------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select s.stud_id,s.name,m.subject,m.marks
+    -> from student s
+    -> join marks m on s.stud_id = m.stud_id;
++---------+-------+-----------+-------+
+| stud_id | name  | subject   | marks |
++---------+-------+-----------+-------+
+|       1 | jeni | maths     |    89 |
+|       2 | suchan | physics   |    90 |
+|       3 | bheem | chemistry |    78 |
+|       4 | chukii | tamil     |    67 |
+|       5 | suchuu| science   |    99 |
++---------+-------+-----------+-------+
+5 rows in set (0.00 sec)
