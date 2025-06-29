@@ -1,0 +1,40 @@
+==ENTITIES:
+--Book(book_id,title,auther)
+--Menber(member_id,name,join_date)
+--Loan(loan_id,book_id,member_id)
+--staff(staff_id,name,role)
+
+==ER DIAGRAM
+Member----<loan>---Book
+Staff(optional relation to manage books/loan)
+
+mysql> create table staff(
+    -> staff_id int primary key,
+    -> name varchar(100),
+    -> role varchar(50));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table member(
+    -> member_id int primary key,
+    -> name varchar(100),
+    -> join_date date);
+ERROR 1050 (42S01): Table 'member' already exists
+mysql> create table members(
+    -> member_id int primary key,
+    -> name varchar(100));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table Booksbook(
+    -> book_id int primary key,
+    -> title varchar(100),
+    -> author varchar(100));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table loan(
+    -> loan_id int primary key,
+    -> book_id int,
+    -> member_id int,
+    -> foreign key (book_id) references Booksbook(book_id)
+    -> ,
+    -> foreign key (member_id) references members(member_id));
+Query OK, 0 rows affected (0.04 sec)
