@@ -1,0 +1,87 @@
+mysql> select * from student;
++---------+-------+------+-----------------+
+| stud_id | name  | age  | emain           |
++---------+-------+------+-----------------+
+|       1 | jeni |   18 | priya@gmail.com |
+|       2 | jinu |   17 | renu@gmail.com  |
+|       3 | johny |   15 | mohan@gmail.com |
+|       4 | john |   10 | kani@gmail.com  |
+|       5 | ggg |   27 | gokul@gmail.com |
++---------+-------+------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from department;
++---------+-----------+
+| dept_id | dept_name |
++---------+-----------+
+|       1 | HR        |
+|       2 | IT        |
+|       3 | Finance   |
+|       4 | Sales     |
+|       5 | Product   |
++---------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from Marks;
++---------+-----------+-------+
+| stud_id | subject   | marks |
++---------+-----------+-------+
+|       1 | maths     |    89 |
+|       2 | physics   |    90 |
+|       3 | chemistry |    78 |
+|       4 | tamil     |    67 |
+|       5 | science   |    99 |
++---------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select d.name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.dept_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.name;
+ERROR 1054 (42S22): Unknown column 'd.name' in 'field list'
+mysql> select d.depy_name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.dept_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.name;
+ERROR 1054 (42S22): Unknown column 'd.depy_name' in 'field list'
+mysql> select d.dept_name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.dept_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.name;
+ERROR 1054 (42S22): Unknown column 's.dept_id' in 'on clause'
+mysql> alter table student add column dept_id int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into student(dept_id) values(1),(2),(3),(4),(5);
+ERROR 1364 (HY000): Field 'stud_id' doesn't have a default value
+mysql> select d.dept_name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.stud_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.name;
+ERROR 1054 (42S22): Unknown column 'd.name' in 'group statement'
+mysql> select d.dept_name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.dept_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.dept_name;
+Empty set (0.00 sec)
+
+mysql> select d.dept_name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.stud_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.name;
+ERROR 1054 (42S22): Unknown column 'd.name' in 'group statement'
+mysql> select d.dept_name as department_name,avg(m.marks) as avg_marks
+    -> group by d.name;
+ERROR 1109 (42S02): Unknown table 'd' in field list
+mysql> select d.dept_name as department_name,avg(m.marks) as avg_marks
+    -> from student s
+    -> join department d on s.dept_id = d.dept_id
+    -> join marks m on s.stud_id = m.stud_id
+    -> group by d.dept_name;
