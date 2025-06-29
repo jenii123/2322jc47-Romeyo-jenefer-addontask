@@ -1,0 +1,31 @@
+mysql> create table sales(
+    -> s_id int,
+    -> product_id int,
+    -> sale_amt decimal(10,2),
+    -> sale_date date);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into sales vlaues(1,101,40000,'2006-07-10'),(2,102,50000,'2008-05-15'),(3,103,60000,'2005-06-10'),(4,104,70000,'2001-06-10'),(5,105,80000,'2003-09-22');
+mysql> alter table sales drop column sale_date;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into sales values(1,101,30000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into sales values(2,102,40000),(3,103,50000),(4,104,40000);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select product_id,sum(sale_amt) as total_sales
+    -> from sales
+    -> group by product_id;
++------------+-------------+
+| product_id | total_sales |
++------------+-------------+
+|        101 |    30000.00 |
+|        102 |    40000.00 |
+|        103 |    50000.00 |
+|        104 |    40000.00 |
++------------+-------------+
+4 rows in set (0.00 sec)
